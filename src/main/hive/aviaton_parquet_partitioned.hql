@@ -32,10 +32,7 @@ SET hive.exec.dynamic.partition.mode=nonstrict;
 SET hive.exec.dynamic.partition=true;
 
 INSERT OVERWRITE TABLE mdoroshenko.aviation_parquet PARTITION (year, month, day)
-SELECT     Year_col as year
-          ,Month
-          ,DayofMonth as day
-          ,DayOfWeek
+SELECT     DayOfWeek
           ,DepTime
           ,CRSDepTime
           ,ArrTime
@@ -61,4 +58,7 @@ SELECT     Year_col as year
           ,NASDelay
           ,SecurityDelay
           ,LateAircraftDelay
+          ,year
+          ,Month
+          ,DayofMonth as day
           FROM mdoroshenko.aviation;
